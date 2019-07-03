@@ -25,7 +25,7 @@ Requirements
 * flask
 * flask-wtf
 * [youtube-dl](https://ytdl-org.github.io/youtube-dl/)
-* ffmpeg/avconv
+* ffmpeg
 
 Starting the Server
 -------------------
@@ -43,9 +43,9 @@ Bugs and Feature Requests
 Feature Requests
 ----------------
 
-* TODO: Fix formatting
-* TODO: Delete downloads after a while
-* TODO: Include recommended cron lines for deleting old downloads and updating ytdl
+* Add an animated loading image (with "this can take a few minutes")
+* Delete downloads after a while
+* Include recommended cron lines for deleting old downloads and updating ytdl
 
 Known Bugs
 ----------
