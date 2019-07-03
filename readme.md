@@ -43,7 +43,7 @@ Bugs and Feature Requests
 Feature Requests
 ----------------
 
-* Add an animated loading image (with "this can take a few minutes")
+* Add an animated "converting" image (with "this may take a few minutes")
 * Delete downloads after a while
 * Include recommended cron lines for deleting old downloads and updating ytdl
 
