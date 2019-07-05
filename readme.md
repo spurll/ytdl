@@ -13,11 +13,12 @@ Installation
 You'll need to install [youtube-dl](https://ytdl-org.github.io/youtube-dl/). It's
 recomended that you keep it updated (e.g., via a cron job).
 
-```
-youtube-dl -U
+```sh
+youtube-dl -U                       # If installed manually, or...
+pip3 install --upgrade youtube-dl   # ...if installed via pip
 ```
 
-You'll also need to install ffmpeg/avconv.
+You'll also need to install ffmpeg.
 
 Requirements
 ------------
@@ -45,7 +46,7 @@ Feature Requests
 
 * Add an animated "converting" image (with "this may take a few minutes")
 * Delete downloads after a while
-* Include recommended cron lines for deleting old downloads and updating ytdl
+* Include recommended cron lines for deleting old downloads
 
 Known Bugs
 ----------
