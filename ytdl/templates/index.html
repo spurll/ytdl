@@ -69,7 +69,7 @@
                 {{form.hidden_tag()}}
 
                 <div class="narrow right"><input type="submit" value="Download" /></div>
-                <div class="wide left">{{form.url(autofocus=True, placeholder="Video URL")}}</div>
+                <div class="wide left">{{form.url(autofocus=True, placeholder="Video URL", onfocus="this.select()")}}</div>
 
                 <div>{{form.fmt}}</div>
             </form>
