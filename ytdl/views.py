@@ -26,18 +26,17 @@ def index():
 
     fmt = form.fmt.data
 
+    command = [
+        'youtube-dl', form.url.data, '-o',
+        os.path.join(directory, '%(title)s.%(ext)s')
+    ]
+
+    if fmt != 'v':
+        command.extend(['-x', f'--audio-format={fmt}'])
+
     try:
         # Download the file
-        process = run(
-            [
-                'youtube-dl',
-                form.url.data,
-                '-o', os.path.join(directory, '%(title)s.%(ext)s'),
-                '-x' if fmt != 'v' else '',
-                f'--audio-format={fmt}' if fmt != 'v' else ''
-            ],
-            check=True
-        )
+        process = run(command, check=True)
 
     except Exception as e:
         print(e)
