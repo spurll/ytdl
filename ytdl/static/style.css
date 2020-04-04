@@ -89,6 +89,7 @@ input[type="text"] {
     width: 100%;
     padding: 5px;
     margin: 5px;
+    font-size: 16px;
 }
 
 input[type="submit"] {
@@ -101,6 +102,7 @@ input[type="submit"] {
 button, input[type="submit"], input[type="reset"] {
     border-color: #ffffff;
     cursor: pointer;
+    font-size: 16px;
 }
 
 button:hover, input[type="submit"]:hover, input[type="reset"]:hover {
