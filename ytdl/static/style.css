@@ -74,13 +74,13 @@ tr:nth-child(even) { background-color: #444444; border-color: #444444; }
 input {
     color: #ffffff;
     background-color: transparent;
-    border: solid 1px #444444;
+    border: solid 1px #cccccc;
 }
 
 select {
     color: #ffffff;
     background-color: transparent;
-    border: solid 1px #444444;
+    border: solid 1px #cccccc;
 }
 
 select option { background-color: #222222; }
