@@ -5,14 +5,14 @@
 
 		<title>YTDL</title>
 
-		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}"/>
-		<link rel="shortcut icon" href="{{url_for('static', filename='icon.png')}}"/>
+		<link rel="stylesheet" type="text/css" href={{url_for("static", filename="common.css")}}/>
+		<link rel="stylesheet" type="text/css" href={{url_for("static", filename="style.css")}}/>
+		<link rel="shortcut icon" href={{url_for("static", filename="icon.png")}}/>
 
-		<script type="text/javascript" src="{{url_for('static', filename='jquery-3.1.0.min.js')}}"></script>
+		<script type="text/javascript" src={{url_for("static", filename="jquery-3.1.0.min.js")}}></script>
 	 </head>
 
 	<body>
-		<div id="title-buffer"></div>
 		<div id="title-bar">
 			<div id="title">YTDL Video Downloader</div>
 		</div>
@@ -31,8 +31,8 @@
             <form method="POST">
                 {{form.hidden_tag()}}
 
-                <div class="narrow right"><input type="submit" value="Download" /></div>
-                <div class="wide left">{{form.url(autofocus=True, placeholder="Video URL", onfocus="this.select()")}}</div>
+                <input type="submit" value="Download" />
+                {{form.url(autofocus=True, placeholder="Video URL", onfocus="this.select()")}}
 
                 <div>{{form.fmt}}</div>
             </form>
