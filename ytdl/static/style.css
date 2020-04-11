@@ -3,7 +3,7 @@ div#title-bar {
 }
 
 #content {
-	max-width: 500px;
+    max-width: 500px;
 }
 
 input[type="text"] {
