@@ -1,10 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import TextField, RadioField
-from wtforms.validators import Required
+from wtforms import StringField, RadioField
+from wtforms.validators import DataRequired
 
 
 class DownloadForm(FlaskForm):
-    url = TextField('URL', validators=[Required()])
+    url = StringField('URL', validators=[DataRequired()])
     fmt = RadioField(
         'Format',
         choices=[

@@ -1,4 +1,4 @@
-import os.path
+import os, time, sys, shutil
 from tempfile import mkdtemp
 from subprocess import run
 from flask import render_template, flash, request, send_from_directory
@@ -51,3 +51,24 @@ def index():
     # Send the file to the user
     return send_from_directory(directory, files[0], as_attachment=True)
 
+
+def clean():
+    """
+    Clear downloads that are more than a week old.
+    """
+    now = time.time()
+
+    for file in os.listdir(app.config['VIDEO_DIR']):
+        path = os.path.join(app.config['VIDEO_DIR'], file)
+
+        # If it hasn't been modified in the last week, remove it
+        if os.stat(path).st_mtime < now - 7 * 86400:
+            try:
+                print(f'Removing {path}...')
+                if os.path.isfile(path) or os.path.islink(path):
+                    os.unlink(path)
+                elif os.path.isdir(path):
+                    shutil.rmtree(path)
+
+            except Exception as e:
+                print(f'Failed to delete {path}: {e}')
