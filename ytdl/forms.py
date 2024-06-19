@@ -8,10 +8,9 @@ class DownloadForm(FlaskForm):
     fmt = RadioField(
         'Format',
         choices=[
-            ('mp3', 'Audio (MP3)'),
-            ('wav', 'Audio (WAV)'),
-            ('v', 'Video')
+            ('m4a', 'Audio (M4A)'),
+            ('mp4', 'Video (MP4)')
         ],
-        default='mp3'
+        default='mp4'
     )
 

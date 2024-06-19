@@ -2,7 +2,7 @@ ytdl
 ====
 
 A web application for downloading audio/video from YouTube. Basically just a web wrapper
-for [youtube-dl](https://ytdl-org.github.io/youtube-dl/) with a stripped-down feature set.
+for [yt-dlp](https://pypi.org/project/yt-dlp) with a stripped-down feature set.
 
 Usage
 =====
@@ -10,12 +10,11 @@ Usage
 Installation
 ------------
 
-You'll need to install [youtube-dl](https://ytdl-org.github.io/youtube-dl/). It's
-recomended that you keep it updated (e.g., via a cron job).
+You'll need to install [yt-dlp](https://pypi.org/project/yt-dlp/). It's recomended that
+you keep it updated (e.g., via a cron job):
 
 ```sh
-youtube-dl -U                       # If installed manually, or...
-pip3 install --upgrade youtube-dl   # ...if installed via pip
+python3 -m pip install --upgrade yt-dlp
 ```
 
 You'll also need to install ffmpeg.
@@ -23,9 +22,9 @@ You'll also need to install ffmpeg.
 Requirements
 ------------
 
-* flask
+* flask (3.0+)
 * flask-wtf
-* [youtube-dl](https://ytdl-org.github.io/youtube-dl/)
+* yt-dlp
 * ffmpeg
 
 Starting the Server
@@ -38,6 +37,22 @@ If you're having trouble configuring your sever, I wrote a
 [blog post](http://blog.spurll.com/2015/02/configuring-flask-uwsgi-and-nginx.html)
 explaining how you can get Flask, uWSGI, and Nginx working together.
 
+Cron Jobs
+---------
+
+To keep `yt-dlp` up to date:
+
+```cron
+15 5 * * * /usr/bin/python3 -m pip install --upgrade yt-dlp --quiet &>/dev/null
+```
+
+To periodically delete the contents of the `downloads` folder (where downloaded videos are
+stored temporarily to be served to users):
+
+```cron
+40 3 * * 0 python3 -c "from os import chdir; chdir('/opt/ytdl/'); import ytdl; ytdl.views.clean()" > /dev/null 
+```
+
 Bugs and Feature Requests
 =========================
 
@@ -45,8 +60,6 @@ Feature Requests
 ----------------
 
 * Add an animated "converting" image (with "this may take a few minutes")
-* Delete downloads after a while
-* Include recommended cron lines for deleting old downloads
 
 Known Bugs
 ----------
@@ -56,7 +69,7 @@ None
 Thanks
 ======
 
-Thanks to the team behind [youtube-dl](https://ytdl-org.github.io/youtube-dl/)!
+Thanks to the team behind [yt-dlp](https://ytdl-org.github.io/youtube-dl/)!
 
 License Information
 ===================

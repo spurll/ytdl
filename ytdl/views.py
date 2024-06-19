@@ -2,6 +2,7 @@ import os, time, sys, shutil
 from tempfile import mkdtemp
 from subprocess import run
 from flask import render_template, flash, request, send_from_directory
+from yt_dlp import YoutubeDL
 
 from ytdl import app
 from ytdl.forms import DownloadForm
@@ -24,20 +25,17 @@ def index():
     # Create temporary directory
     directory = mkdtemp(dir=app.config['VIDEO_DIR'])
 
-    fmt = form.fmt.data
+    print(form.fmt.data)
 
-    command = [
-        'youtube-dl', form.url.data, '-o',
-        os.path.join(directory, '%(title)s.%(ext)s')
-    ]
-
-    if fmt != 'v':
-        command.extend(['-x', f'--audio-format={fmt}'])
+    options = {
+        'outtmpl': os.path.join(directory, '%(title)s.%(ext)s'),
+        'format': form.fmt.data,
+        'cachedir': False
+    }
 
     try:
-        # Download the file
-        process = run(command, check=True)
-
+        with YoutubeDL(options) as ytdl:
+            ytdl.download(form.url.data)
     except Exception as e:
         print(e)
         flash('Error: Could not download/convert the video as requested.')
