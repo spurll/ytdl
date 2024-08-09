@@ -43,7 +43,7 @@ Cron Jobs
 To keep `yt-dlp` up to date:
 
 ```cron
-15 5 * * * /usr/bin/python3 -m pip install --upgrade yt-dlp --quiet &>/dev/null
+15 5 * * * source /opt/ytdl/venv/bin/activate && pip install --upgrade yt-dlp > /dev/null ; deactivate
 ```
 
 To periodically delete the contents of the `downloads` folder (where downloaded videos are
